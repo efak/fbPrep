@@ -28,11 +28,16 @@ class BalancedBrackets {
         map.put(']', '[');
 
         char[] sCharArr = s.toCharArray();
+        char val, top;
 
         for(char c: sCharArr){
             if( map.containsKey(c) ){
-                char val = map.get(c);
-                char top = stack.pop();
+                val = map.get(c);
+                 
+                if( stack.isEmpty()){
+                    return false;
+                }
+                top = stack.pop();
                 if ( top != val){
                     return false;
                 }
@@ -41,7 +46,7 @@ class BalancedBrackets {
                 stack.push(c);
             }
         }
-
+       
         return stack.isEmpty();
     }
   }
