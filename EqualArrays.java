@@ -2,13 +2,10 @@ import java.io.*;
 import java.util.*;
 
 /**
-     * Given two arrays A and B of length N, determine if there is a way to make A
-     * equal to B by reversing any subarrays from array B any number of times
-     * 
-     * @param array_a
-     * @param array_b
-     * @return
-     */
+* Given two arrays A and B of length N, determine if there is a way to make A
+* equal to B by reversing any subarrays from array B any number of times
+* 
+*/
 
 
 
@@ -19,6 +16,7 @@ class EqualArrays {
 
   boolean areTheyEqual(int[] array_a, int[] array_b) {
     // Write your code here
+        
     Arrays.sort(array_a);
     Arrays.sort(array_b);
     
