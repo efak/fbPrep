@@ -38,11 +38,11 @@ public class RotateCipher {
     }
 
     //create  a map for lowercase and uppercase
-    HashMap<Integer, Character> buildCaseMap(char start, char end) {
+    HashMap<Integer, Character> buildCaseMap() {
         HashMap<Integer, Character> map = new HashMap<>();
         int i = 0;
 
-        for (char c = start; c <= end; c++) {
+        for (char c = 'a'; c <= 'z'; c++) {
             map.put(i, c);
             i++;
         }
@@ -54,9 +54,7 @@ public class RotateCipher {
         // Write your code here
         StringBuilder result = new StringBuilder();
         char[] inputCharArr = input.toCharArray();
-        
-        HashMap<Integer, Character> lowHashMap = buildCaseMap('a', 'z');
-        HashMap<Integer, Character> upperHashMap = buildCaseMap('A', 'Z');
+        HashMap<Integer, Character> lettersMap = buildCaseMap();
 
         for (char ch : inputCharArr) {
             if (Character.isAlphabetic(ch)) {
@@ -64,10 +62,11 @@ public class RotateCipher {
                 val = (val + rotationFactor) % 26;
 
                 if (Character.isLowerCase(ch)) {
-
-                    result.append(lowHashMap.get(val));
+                    result.append(lettersMap.get(val));
                 } else {
-                    result.append(upperHashMap.get(val));
+                    char letter = lettersMap.get(val);
+                    char upper = Character.toUpperCase(letter);
+                    result.append(upper);
                 }
             }
             else if ( Character.isDigit(ch)){
